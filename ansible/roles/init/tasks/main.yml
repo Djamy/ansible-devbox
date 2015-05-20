@@ -6,7 +6,7 @@
     - { path: '.zshrc', dest: '/home/vagrant/.zshrc', owner: vagrant, group: vagrant, mode: 600 }
 
 - name: copy user files
-  copy: src=../files{{ item.path }} dest={{user_home_base}}/{{user}}{{ item.dest }} owner={{user}} group={{user}}
+  copy: src=../files{{ item.path }} dest=/home/vagrant{{ item.dest }} owner=vagrant group=vagrant
   with_items:
     - { path: '/.gitconfig', dest: '/.gitconfig', mode: 644 }
     - { path: '/.gitignore_global', dest: '/.gitignore_global', mode: 644 }
