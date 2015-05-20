@@ -43,6 +43,9 @@ Vagrant.configure("2") do |config|
             ansible.playbook = "ansible/playbook.yml"
             ansible.inventory_path = "ansible/devbox"
             ansible.limit = 'all'
+            ansible.extra_vars = {
+                hostname: "devbox"
+            }
         end
     end
 
