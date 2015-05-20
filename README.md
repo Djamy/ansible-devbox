@@ -17,7 +17,7 @@ ansible-devbox comes with a full web environment with those modules preinstalled
 * MySQL
 * composer
 * Zsh and [oh-my-zsh](https://github.com/robbyrussell/oh-my-zsh)
-* phptools (phpunit, phploc, ...)
+* some phptools (list in *ansible-devbox/ansible/roles/app/tasks/main.yml*)
 
 ##Installation
 
@@ -38,11 +38,13 @@ Add your name and email address to basic git config
 $ vim ansible-devbox/ansible/playbook.yml
 ```
 
-You can edit the VagrantFile as you need and to specify your shared folder(s=
+You can edit the VagrantFile as you need and to specify your shared folder(s)
 
 ```bash
 $ vim VagrantFile
 ```
+Add this line to your host file
+    11.11.11.11 dev.local
 
 ### Nginx configuration
 
@@ -58,11 +60,11 @@ $ vagrant up && vagrant ssh
 
 ##Infos
 
-Login : vagrant/vagrant
+Login *(unless you already put ssh public key to the authorized_keys file as described above)* : **vagrant/vagrant**
 
 MySQL credentials :
-* Root User : root / toor
-* MySQL User : vagrant / vagrant
+* Root User : **root / toor**
+* MySQL User : **vagrant / vagrant**
 
 Useful alias :
 * alias l='ls -l'
@@ -79,5 +81,7 @@ Useful alias :
 ##TODO
 
 * cleaning useless conf
-* uncomment the dist-upgrade line : ansible-devbox/ansible/roles/init/tasks/main.yml
+* uncomment the dist-upgrade line : *ansible-devbox/ansible/roles/init/tasks/main.yml*
 * more tests
+* Apache conf for apache users
+* more DBs (MariaDB/MongoDB)
