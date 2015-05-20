@@ -9,8 +9,8 @@
     - [ "vars/nginxphp.yml", "vars/ws_defaults.yml" ]
   roles:
     - init
-    - php5-cli
     - nginx
+    - php5-cli
     - php5-fpm
     - mysql
     - composer
