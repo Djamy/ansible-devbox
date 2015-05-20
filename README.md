@@ -41,6 +41,11 @@ You can edit the VagrantFile as you need:
 $ vim VagrantFile
 ```
 
+### Nginx configuration
+A default vhost is provided but if you need a Symfony2 vhost you can uncomment the line in
+
+    ansible-devbox/ansible/vars/nginxphp.yml
+
 ## First start
 
 ```bash
