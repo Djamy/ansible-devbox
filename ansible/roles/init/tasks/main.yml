@@ -28,8 +28,9 @@
 - name: Update repository
   action: command /usr/bin/apt-get update
 
-- name: Upgrade repository
-  action: command apt-get -y dist-upgrade --force-yes
+## Too long - uncomment when all it is done
+#- name: Upgrade repository
+#  action: command apt-get -y dist-upgrade --force-yes
 
 - name: Install System Packages
   sudo: yes
