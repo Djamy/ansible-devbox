@@ -25,7 +25,7 @@ Vagrant.configure("2") do |config|
     end
 
     config.vm.host_name = "devbox"
-    config.vm.box = "debian-7.3"
+    config.vm.box = "debian-7.3x64"
     config.vm.box_url = "http://puppet-vagrant-boxes.puppetlabs.com/debian-73-x64-virtualbox-nocm.box"
     config.vm.box_check_update = true
 
