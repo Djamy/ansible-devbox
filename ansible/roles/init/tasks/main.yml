@@ -3,10 +3,10 @@
   copy: src=../files/{{item.path}} dest={{item.dest}} mode={{item.mode}} owner={{item.owner}} group={{item.group}}
   with_items:
     - { path: '.zshrc', dest: '/root/.zshrc', owner: root, group: root, mode: 600 }
-    - { path: '.zshrc', dest: '/home/vagrant/.zshrc', owner: vagrant, group: vagrant, mode: 600 }
+    - { path: '.zshrc', dest: '/home/{{user}}/.zshrc', owner: "{{user}}", group: "{{user}}", mode: 600 }
 
 - name: copy user files
-  copy: src=../files{{ item.path }} dest=/home/vagrant{{ item.dest }} owner=vagrant group=vagrant
+  copy: src=../files{{ item.path }} dest=/home/{{user}}{{ item.dest }} owner={{user}} group={{user}}
   with_items:
     - { path: '/.gitconfig', dest: '/.gitconfig', mode: 644 }
     - { path: '/.gitignore_global', dest: '/.gitignore_global', mode: 644 }
@@ -87,6 +87,16 @@
 - name: Update /etc/hosts
   lineinfile: dest=/etc/hosts regexp='^127\.0\.0\.1' line='127.0.0.1 localhost {{ hostname }}' owner=root group=root mode=0644
 
+- name: add sudoadmin group
+  group: name={{item}} state=present
+  with_items:
+    - sudoadmin
+    - sudoers
+
+# add user and group stuff
+- name: add {{user}} and home /home/{{user}}
+  action: user name={{user}} shell=/bin/bash groups=sudoadmin append=yes home=/home/{{user}}
+
 - name: copy smb.conf
   action: copy src=../files/smb.conf dest=/etc/samba/smb.conf owner=root group=root
 
@@ -112,8 +122,9 @@
   shell: visudo -q -c -f /etc/sudoers.tmp && cp -f /etc/sudoers.tmp /etc/sudoers
 
 - name: Clone oh-my-zsh repo
-  git: repo=https://github.com/robbyrussell/oh-my-zsh.git dest=/home/$user/.oh-my-zsh
+  git: repo=https://github.com/robbyrussell/oh-my-zsh.git dest=/root/.oh-my-zsh
+  git: repo=https://github.com/robbyrussell/oh-my-zsh.git dest=/home/{{user}}/.oh-my-zsh
 
 - name: Set zsh as default shell
-  user: name=root shell=/bin/zsh
-  user: name=vagrant shell=/bin/zsh
+  user: name=root shell=/usr/bin/zsh
+  user: name={{user}} shell=/usr/bin/zsh

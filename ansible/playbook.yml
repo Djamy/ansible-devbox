@@ -2,6 +2,7 @@
 - hosts: devbox
   sudo: true
   vars:
+    user: vagrant
     timezone: Europe/Paris
     servername: dev.local
     gitusername: YourName
