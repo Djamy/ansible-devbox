@@ -52,6 +52,7 @@
     - samba-common
     - smbclient
     - zsh
+    - multitail
 
 - name: Add ppa Repository
   sudo: yes
@@ -93,9 +94,8 @@
   command: /etc/init.d/samba reload
 
 - name: ensure smbuser with default pw
-  raw:  (echo "wwwdev"; echo "wwwdev") | smbpasswd -s -a wwwdev
+  raw:  (echo "www-data"; echo "www-data") | smbpasswd -s -a wwwdata
 
-# do the sudoers stuff
 - name: copy sudoers file for safety
   command: cp -f /etc/sudoers /etc/sudoers.tmp
 

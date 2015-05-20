@@ -36,7 +36,6 @@
     - phpunit
     - mcrypt
 
-# copy all files needed for a user to his homediir
 - name: copy configs
   action: copy src=../files{{item.path}} dest={{item.dest}} mode={{item.mode}}
   with_items:

@@ -7,9 +7,12 @@
     - vars/mysql.yml
     - vars/common.yml
     - [ "vars/nginxphp.yml", "vars/ws_defaults.yml" ]
+    # If Apache
+    #- [ "vars/apachephp.yml", "vars/ws_defaults.yml" ]
   roles:
     - init
     - nginx
+    #- apache
     - php
     - mysql
     - composer

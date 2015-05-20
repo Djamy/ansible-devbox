@@ -84,6 +84,8 @@ export SYMFONY_ASSETS_INSTALL="symlink"
 # alias ohmyzsh="mate ~/.oh-my-zsh"i
 alias l='ls -l'
 alias ll='ls -la'
+alias ngr='service nginx restart'
+alias ngl='multitail /var/log/nginx/dev_error.log /var/log/nginx/dev_access.log'
 
 # Change directory on login
 if [[ -o login ]]; then
