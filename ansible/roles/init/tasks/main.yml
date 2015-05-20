@@ -94,7 +94,7 @@
   command: /etc/init.d/samba reload
 
 - name: ensure smbuser with default pw
-  raw:  (echo "www-data"; echo "www-data") | smbpasswd -s -a wwwdata
+  raw:  (echo "www-data"; echo "www-data") | smbpasswd -s -a www-data
 
 - name: copy sudoers file for safety
   command: cp -f /etc/sudoers /etc/sudoers.tmp
