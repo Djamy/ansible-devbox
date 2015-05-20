@@ -51,8 +51,8 @@ Vagrant.configure("2") do |config|
     config.vm.synced_folder "/home", "/vagrant", type: "nfs"
 
     # Shared folder without NFS : works with Windows host
-    config.vm.synced_folder "/home/yourname/Projects", "/var/www", id: "vagrant-root",
+    config.vm.synced_folder "/home/yourname/Public", "/var/www", id: "vagrant-root",
         owner: "vagrant",
-        group: "www-data",
+        group: "vagrant",
         mount_options: ["dmode=775,fmode=664"]
 end

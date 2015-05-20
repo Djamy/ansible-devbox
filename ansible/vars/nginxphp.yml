@@ -9,7 +9,7 @@ ws_template: default.tpl
 
 nginx_domain: "{{servername}}"
 nginx_home: /var/www
-nginx_user: www-data
-nginx_group: www-data
+nginx_user: "{{user}}"
+nginx_group: "{{user}}"
 nginx_fcgi: 9000
 nginx_pool: default

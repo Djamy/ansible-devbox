@@ -9,6 +9,7 @@
 **NFS on Unix:** Synced folders uses NFS by default, for better performance - if your Host OS is Linux, you'll need to install nfsd.
 
 ## What's inside?
+
 ansible-devbox comes with a full web environment with those modules preinstalled:
 
 * nginx (and/or Apache, it's up to you)
@@ -27,6 +28,10 @@ $ cd YourDevBox
 
 ## Configuration
 
+After cloning the repository to your local environment, add your ssh public key to
+
+    ansible-devbox/ansible/roles/init/files/authorized_keys
+
 Add your name and email address to basic git config
 
 ```bash
@@ -40,6 +45,7 @@ $ vim VagrantFile
 ```
 
 ### Nginx configuration
+
 A default vhost is provided but if you need a Symfony2 vhost you can uncomment the line in
 
     ansible-devbox/ansible/vars/nginxphp.yml
@@ -51,6 +57,8 @@ $ vagrant up && vagrant ssh
 ```
 
 ##Infos
+
+Login : vagrant/vagrant
 
 MySQL credentials :
 * Root User : root / toor
@@ -72,3 +80,4 @@ Useful alias :
 
 * cleaning useless conf
 * uncomment the dist-upgrade line : ansible-devbox/ansible/roles/init/tasks/main.yml
+* more tests

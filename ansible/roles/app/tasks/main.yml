@@ -8,3 +8,9 @@
     - { url: 'https://phar.phpunit.de/phpcpd.phar', dest: 'phpcpd', mode: '555' }
     - { url: 'https://phar.phpunit.de/phpdcd.phar', dest: 'phpcd', mode: '555' }
     - { url: 'https://github.com/Halleck45/PhpMetrics/raw/master/build/phpmetrics.phar', dest: 'metrics', mode: '555' }
+
+- name: restart php-fpm
+  command: /etc/init.d/php5-fpm restart
+
+- name: fix log permissions
+  command: chown -R {{user}}:{{user}} /var/log/nginx
