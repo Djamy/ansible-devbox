@@ -4,6 +4,8 @@
   vars:
     timezone: Europe/Paris
     servername: dev.local
+    gitusername: YourName
+    gitemail: your@email.com
   vars_files:
     - vars/mysql.yml
     - vars/common.yml

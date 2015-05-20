@@ -1,6 +1,6 @@
 [user]
-    name = Your name
-    email = your@mail.com
+    name = {{gitusername}}
+    email = {{gitemail}}
 [alias]
     co = checkout
     ci = commit -s

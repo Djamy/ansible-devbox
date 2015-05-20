@@ -5,7 +5,7 @@ ws_vhost_path: /etc/nginx/sites-available
 ws_vhost_file: default
 ws_template: default.tpl
 
-nginx_domain: dev.local
+nginx_domain: {{servername}}
 nginx_home: /var/www
 nginx_user: www-data
 nginx_group: www-data
