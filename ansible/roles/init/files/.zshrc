@@ -86,6 +86,12 @@ alias l='ls -l'
 alias ll='ls -la'
 alias ngr='service nginx restart'
 alias ngl='multitail /var/log/nginx/dev_error.log /var/log/nginx/dev_access.log'
+alias cdw='cd /var/www'
+alias cdl='cd /var/log'
+alias ..='cd ..'
+alias ...='cd ../..'
+alias ....='cd ../../..'
+alias .....='cd ../../../..'
 
 # Change directory on login
 if [[ -o login ]]; then

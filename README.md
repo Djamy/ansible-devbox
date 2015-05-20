@@ -52,3 +52,15 @@ $ vagrant up && vagrant ssh
 MySQL credentials :
 * Root User : root / toor
 * MySQL User : vagrant / vagrant
+
+Useful alias :
+* alias l='ls -l'
+* alias ll='ls -la'
+* alias ngr='service nginx restart'
+* alias ngl='multitail /var/log/nginx/dev_error.log /var/log/nginx/dev_access.log'
+* alias cdw='cd /var/www'
+* alias cdl='cd /var/log'
+* alias ..='cd ..'
+* alias ...='cd ../..'
+* alias ....='cd ../../..'
+* alias .....='cd ../../../..'
