@@ -1,0 +1,52 @@
+- name: add/check dotdeb packaged
+  apt_repository: repo='deb http://packages.dotdeb.org wheezy-php56 all' state=present
+
+- name: add/check dotdeb packages (source)
+  apt_repository: repo='deb-src http://packages.dotdeb.org wheezy-php56 all' state=present
+
+- name: Update repository
+  action: command /usr/bin/apt-get update
+
+- name: uninstall packages
+  action: apt pkg={{item}} state=absent
+  with_items:
+    - php-apc
+
+- name: install common
+  action: apt pkg={{item}} state=latest force=yes
+  with_items:
+    - php5-fpm
+    - php5-common
+    - php5-cli
+
+- name: install additional packages
+  action: apt pkg={{item}} state=latest force=yes
+  with_items:
+    - php5-apcu
+    - php5-curl
+    - php5-gd
+    - php5-imagick
+    - php5-mcrypt
+    - php5-memcache
+    - php5-mysql
+    - php5-xdebug
+    - php-pear
+    - php5-intl
+    - php5-dev
+    - phpunit
+    - mcrypt
+
+# copy all files needed for a user to his homediir
+- name: copy configs
+  action: copy src=../files{{item.path}} dest={{item.dest}} mode={{item.mode}}
+  with_items:
+    - { path: '/custom.php.ini', dest: '/etc/php5/fpm/conf.d/custom.php.ini', mode: 644 }
+    - { path: '/custom.xdebug.ini', dest: '/etc/php5/fpm/conf.d/custom.xdebug.ini', mode: 644 }
+    - { path: '/custom.cli.php.ini', dest: '/etc/php5/cli/conf.d/custom.php.ini', mode: 644 }
+    - { path: '/dev.local.conf', dest: '/etc/php5/fpm/pool.d/dev.local.conf', mode: 644 }
+
+- name: create slowlog dir
+  action: file path=/var/log/php-fpm/ state=directory
+
+- name: start php-fpm server
+  service: name=php5-fpm state=started enabled=true
