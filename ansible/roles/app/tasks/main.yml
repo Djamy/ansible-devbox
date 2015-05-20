@@ -1,2 +1,10 @@
 ---
 # application tasks to be customized and to run after the main provision
+- name: add php tools
+  action: get_url url={{item.url}} dest=/usr/local/bin/{{item.dest}} mode={{item.mode}} force=yes validate_certs=no
+  with_items:
+    - { url: 'https://phar.phpunit.de/phpunit.phar', dest: 'phpunit', mode: '555' }
+    - { url: 'https://phar.phpunit.de/phploc.phar', dest: 'phploc', mode: '555' }
+    - { url: 'https://phar.phpunit.de/phpcpd.phar', dest: 'phpcpd', mode: '555' }
+    - { url: 'https://phar.phpunit.de/phpdcd.phar', dest: 'phpcd', mode: '555' }
+    - { url: 'https://github.com/Halleck45/PhpMetrics/raw/master/build/phpmetrics.phar', dest: 'metrics', mode: '555' }
