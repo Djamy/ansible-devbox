@@ -29,11 +29,11 @@ $ cd YourDevBox
 ## Configuration
 After cloning the repository to your local environment, add your ssh public key to
 
-    **ansible-devbox/ansible/roles/init/files/authorized_keys**
+    ansible-devbox/ansible/roles/init/files/authorized_keys
 
 Add your name and email address to basic git config
 
-    **ansible-devbox/ansible/playbook.yml**
+    ansible-devbox/ansible/playbook.yml
 
 You can edit the VagrantFile as you need:
 
@@ -50,5 +50,5 @@ $ vagrant up && vagrant ssh
 ##Infos
 
 MySQL credentials :
-   * Root User : root / toor
-   * MySQL User : vagrant / vagrant
+* Root User : root / toor
+* MySQL User : vagrant / vagrant
