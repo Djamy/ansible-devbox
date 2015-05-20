@@ -35,7 +35,7 @@ Add your name and email address to basic git config
 
     ansible-devbox/ansible/playbook.yml
 
-You can edit the VagrantFile as you need:
+You can edit the VagrantFile as you need and to specify your shared folder(s)
 
 ```bash
 $ vim VagrantFile

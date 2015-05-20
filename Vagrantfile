@@ -43,18 +43,15 @@ Vagrant.configure("2") do |config|
             ansible.playbook = "ansible/playbook.yml"
             ansible.inventory_path = "ansible/devbox"
             ansible.limit = 'all'
-            ansible.extra_vars = {
-                hostname: "devbox"
-            }
         end
     end
 
 
-    # Shared folder with NFS : you'll need nfsd
+    # Shared folder with NFS : you'll need nfsd. Unavailable on windows
     config.vm.synced_folder "/home", "/vagrant", type: "nfs"
 
     # Shared folder without NFS : works with Windows host
-    config.vm.synced_folder "/home/www", "/var/www", id: "vagrant-root",
+    config.vm.synced_folder "/home/yourname/Projects", "/var/www", id: "vagrant-root",
         owner: "vagrant",
         group: "www-data",
         mount_options: ["dmode=775,fmode=664"]

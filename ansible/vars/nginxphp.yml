@@ -7,7 +7,7 @@ ws_template: default.tpl
 # If you need a Symfony2 vhost ready
 #ws_template: symfony_vhost.tpl
 
-nginx_domain: {{servername}}
+nginx_domain: "{{servername}}"
 nginx_home: /var/www
 nginx_user: www-data
 nginx_group: www-data
