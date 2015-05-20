@@ -51,6 +51,7 @@
     - samba
     - samba-common
     - smbclient
+    - zsh
 
 - name: Add ppa Repository
   sudo: yes
@@ -109,3 +110,10 @@
 
 - name: final sudoers file check
   shell: visudo -q -c -f /etc/sudoers.tmp && cp -f /etc/sudoers.tmp /etc/sudoers
+
+- name: Clone oh-my-zsh repo
+  git: repo=https://github.com/robbyrussell/oh-my-zsh.git dest=/home/$user/.oh-my-zsh
+
+- name: Set zsh as default shell
+  user: name=root shell=/bin/zsh
+  user: name=vagrant shell=/bin/zsh
