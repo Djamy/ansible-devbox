@@ -27,7 +27,7 @@ Vagrant.configure("2") do |config|
     config.vm.host_name = "devbox"
     config.vm.box = "debian-7.3"
     config.vm.box_url = "http://puppet-vagrant-boxes.puppetlabs.com/debian-73-x64-virtualbox-nocm.box"
-    vconfig.vm.box_check_update = true
+    config.vm.box_check_update = true
 
     config.vm.network :private_network, ip: "11.11.11.11"
     config.ssh.forward_agent = true
