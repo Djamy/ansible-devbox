@@ -3,6 +3,7 @@
   sudo: true
   vars:
     timezone: Europe/Paris
+    servername: dev.local
   vars_files:
     - vars/mysql.yml
     - vars/common.yml
