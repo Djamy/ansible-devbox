@@ -1,0 +1,2 @@
+#!/bin/bash
+printf '{ "%s"    : [ "%s" ] }\n' "devbox" "11.11.11.11"

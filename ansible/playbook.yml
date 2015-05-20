@@ -1,0 +1,20 @@
+---
+- hosts: all
+  sudo: true
+  vars:
+    web_server: nginxphp
+    servername: ymajd-vm 11.11.11.17
+    timezone: Europe/Paris
+  vars_files:
+    - vars/mysql.yml
+    - vars/common.yml
+    - [ "vars/nginxphp.yml", "vars/ws_defaults.yml" ]
+  roles:
+    - init
+    - php5-cli
+    - nginx
+    - php5-fpm
+    - mysql
+    - composer
+    - phpcommon
+    - app
