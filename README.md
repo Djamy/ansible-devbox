@@ -1,7 +1,6 @@
 #ansible-devbox
-===============
 
-##Prerequisite
+##Requirements
 
 * [VirtualBox](https://www.virtualbox.org/)
 * [Vagrant](http://www.vagrantup.com/)
@@ -27,15 +26,14 @@ $ cd YourDevBox
 ```
 
 ## Configuration
-After cloning the repository to your local environment, add your ssh public key to
-
-    ansible-devbox/ansible/roles/init/files/authorized_keys
 
 Add your name and email address to basic git config
 
-    ansible-devbox/ansible/playbook.yml
+```bash
+$ vim ansible-devbox/ansible/playbook.yml
+```
 
-You can edit the VagrantFile as you need and to specify your shared folder(s)
+You can edit the VagrantFile as you need and to specify your shared folder(s=
 
 ```bash
 $ vim VagrantFile
@@ -69,3 +67,8 @@ Useful alias :
 * alias ...='cd ../..'
 * alias ....='cd ../../..'
 * alias .....='cd ../../../..'
+
+##TODO
+
+* cleaning useless conf
+* uncomment the dist-upgrade line : ansible-devbox/ansible/roles/init/tasks/main.yml
