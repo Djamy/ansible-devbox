@@ -1,0 +1,10 @@
+set history=700
+set autoread
+set ruler
+set nu
+syntax enable
+set ignorecase
+set smartcase
+set hlsearch
+set incsearch
+set encoding=utf8

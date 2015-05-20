@@ -1,7 +1,35 @@
 ---
-- name: Update apt
-  sudo: yes
-  apt: update_cache=yes
+- name: copy zsh file
+  copy: src=../files/{{item.path}} dest={{item.dest}} mode={{item.mode}} owner={{item.owner}} group={{item.group}}
+  with_items:
+    - { path: '.zshrc', dest: '/root/.zshrc', owner: root, group: root, mode: 600 }
+    - { path: '.zshrc', dest: '/home/vagrant/.zshrc', owner: vagrant, group: vagrant, mode: 600 }
+
+- name: copy user files
+  copy: src=../files{{ item.path }} dest={{user_home_base}}/{{user}}{{ item.dest }} owner={{user}} group={{user}}
+  with_items:
+    - { path: '/.gitconfig', dest: '/.gitconfig', mode: 644 }
+    - { path: '/.gitignore_global', dest: '/.gitignore_global', mode: 644 }
+    - { path: '/.vimrc', dest: '/.vimrc', mode: 644 }
+    - { path: '/authorized_keys', dest: '/.ssh/authorized_keys', mode: 600 }
+
+- name: add/check wheezy stable
+  apt_repository: repo='deb http://ftp.de.debian.org/debian stable main contrib non-free' state=present
+
+- name: add/check wheezy updates
+  apt_repository: repo='deb http://ftp.debian.org/debian/ wheezy-updates main contrib non-free' state=present
+
+- name: add/check wheezy security updates
+  apt_repository: repo='deb http://security.debian.org/ wheezy/updates main contrib non-free' state=present
+
+- name: add/check wheezy backports
+  apt_repository: repo='deb http://ftp.us.debian.org/debian wheezy-backports main' state=present
+
+- name: Update repository
+  action: command /usr/bin/apt-get update
+
+- name: Upgrade repository
+  action: command apt-get -y dist-upgrade --force-yes
 
 - name: Install System Packages
   sudo: yes
@@ -10,6 +38,18 @@
     - curl
     - wget
     - python-software-properties
+    - vim
+    - git
+    - git-ftp
+    - bash-completion
+    - ntp
+    - ntpdate
+    - unzip
+    - bzip2
+    - zip
+    - samba
+    - samba-common
+    - smbclient
 
 - name: Add ppa Repository
   sudo: yes
@@ -43,3 +83,28 @@
 
 - name: Update /etc/hosts
   lineinfile: dest=/etc/hosts regexp='^127\.0\.0\.1' line='127.0.0.1 localhost {{ hostname }}' owner=root group=root mode=0644
+
+- name: copy smb.conf
+  action: copy src=../files/smb.conf dest=/etc/samba/smb.conf owner=root group=root
+
+- name: reload samba
+  command: /etc/init.d/samba reload
+
+- name: ensure smbuser with default pw
+  raw:  (echo "wwwdev"; echo "wwwdev") | smbpasswd -s -a wwwdev
+
+# do the sudoers stuff
+- name: copy sudoers file for safety
+  command: cp -f /etc/sudoers /etc/sudoers.tmp
+
+- name: create sudoers file backup
+  command: cp -f /etc/sudoers /etc/sudoers.bak
+
+- name: make sure we can sudo as admin group
+  lineinfile: dest=/etc/sudoers.tmp state=present regexp='^%sudoadmin' line='%sudoadmin ALL=(ALL) NOPASSWD:ALL'
+
+- name: also make sure ssh-agent works via sudo
+  lineinfile: dest=/etc/sudoers.tmp state=present regexp='^Defaults env_keep\+\=SSH_AUTH_SOCK' line='Defaults env_keep+=SSH_AUTH_SOCK'
+
+- name: final sudoers file check
+  shell: visudo -q -c -f /etc/sudoers.tmp && cp -f /etc/sudoers.tmp /etc/sudoers
