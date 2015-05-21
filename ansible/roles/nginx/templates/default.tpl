@@ -1,9 +1,9 @@
 server {
     listen 80;
-    server_name dev.local;
-    root /var/www;
-    access_log /var/log/nginx/dev_local.access.log;
-    error_log /var/log/nginx/dev_local.error.log;
+    server_name {{servername}};
+    root {{doc_root}};
+    access_log /var/log/nginx/{{servername}}.access.log;
+    error_log /var/log/nginx/{{servername}}.error.log;
 
     server_name_in_redirect off;
 

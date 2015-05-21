@@ -8,7 +8,7 @@
 
 **NFS on Unix:** Synced folders uses NFS by default, for better performance - if your Host OS is Linux, you'll need to install nfsd.
 
-## What's inside?
+## What's in the box ?
 
 ansible-devbox comes with a full web environment with those modules preinstalled:
 
@@ -32,7 +32,7 @@ After cloning the repository to your local environment, add your ssh public key 
 
     ansible-devbox/ansible/roles/init/files/authorized_keys
 
-Add your name and email address to basic git config
+Add your name and email address to basic git config and edit some stuff in vars if needed
 
 ```bash
 $ vim ansible-devbox/ansible/playbook.yml

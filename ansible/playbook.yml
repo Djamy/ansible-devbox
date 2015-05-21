@@ -8,6 +8,7 @@
     gitusername: YourName
     gitemail: your@email.com
     hostname: devbox
+    doc_root: /var/www/
   vars_files:
     - vars/mysql.yml
     - vars/common.yml

@@ -44,6 +44,6 @@ server {
         fastcgi_param HTTPS off;
     }
 
-    error_log /var/log/nginx/dev_sf_error.log;
-    access_log /var/log/nginx/dev_sf_access.log;
+    error_log /var/log/nginx/{{servername}}.error.log;
+    access_log /var/log/nginx/{{servername}}.access.log;
 }

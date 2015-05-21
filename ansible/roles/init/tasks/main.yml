@@ -58,6 +58,7 @@
     - smbclient
     - zsh
     - multitail
+    - htop
 
 - name: Add ppa Repository
   sudo: yes
@@ -67,11 +68,6 @@
 - name: Update apt
   sudo: yes
   apt: update_cache=yes
-
-- name: Install Extra Packages
-  sudo: yes
-  apt: pkg={{ item }} state=latest
-  with_items: sys_packages
 
 - name: Configure the timezone
   sudo: yes

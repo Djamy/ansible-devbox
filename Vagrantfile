@@ -50,7 +50,7 @@ Vagrant.configure("2") do |config|
     # Shared folder with NFS : you'll need nfsd. Unavailable on windows
     config.vm.synced_folder "/home", "/vagrant", type: "nfs"
 
-    # Shared folder without NFS : works with Windows host
+    # Shared folder without NFS : works with all hosts, Windows included
     config.vm.synced_folder "/home/yourname/Public", "/var/www", id: "vagrant-root",
         owner: "vagrant",
         group: "vagrant",
