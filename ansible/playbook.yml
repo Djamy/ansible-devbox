@@ -11,7 +11,6 @@
     doc_root: /var/www/
   vars_files:
     - vars/mysql.yml
-    - vars/common.yml
     - [ "vars/nginxphp.yml", "vars/ws_defaults.yml" ]
     # If Apache
     #- [ "vars/apachephp.yml", "vars/ws_defaults.yml" ]

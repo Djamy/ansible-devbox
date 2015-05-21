@@ -70,7 +70,7 @@ Useful alias :
 * alias l='ls -l'
 * alias ll='ls -la'
 * alias ngr='service nginx restart'
-* alias ngl='multitail /var/log/nginx/dev_error.log /var/log/nginx/dev_access.log'
+* alias ngl='multitail /var/log/nginx/{{servername}}.error.log /var/log/nginx/{{servername}}.access.log'
 * alias cdw='cd /var/www'
 * alias cdl='cd /var/log'
 * alias ..='cd ..'
@@ -85,3 +85,4 @@ Useful alias :
 * more tests
 * Apache conf for apache users
 * more DBs (MariaDB/MongoDB)
+* create Symfony2 dedicated branch (Nginx vhost)
