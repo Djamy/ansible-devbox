@@ -64,7 +64,7 @@ MySQL credentials :
 Useful alias :
 * alias l='ls -l'
 * alias ll='ls -la'
-* alias ngr='service nginx restart'
+* alias ngr='sudo service nginx restart'
 * alias ngl='multitail /var/log/nginx/dev_local.error.log /var/log/nginx/dev_local.access.log'
 * alias cdw='cd /var/www'
 * alias cdl='cd /var/log'

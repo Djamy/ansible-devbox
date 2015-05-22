@@ -25,10 +25,10 @@ server {
         log_not_found off;
     }
 
-    location ~*  \.(jpg|jpeg|png|gif|css|js|ico)$ {
-        expires max;
-        log_not_found off;
-    }
+#    location ~*  \.(jpg|jpeg|png|gif|css|js|ico)$ {
+#        expires max;
+#        log_not_found off;
+#    }
 
     location / {
         # try to serve file directly, fallback to app_dev.php
