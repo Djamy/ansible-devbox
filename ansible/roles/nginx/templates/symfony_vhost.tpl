@@ -1,7 +1,7 @@
 server {
     listen  80;
 
-    root {{ doc_root }};
+    root {{ doc_root }}/web;
     server_name {{ servername }};
 
     location = /favicon.ico {
