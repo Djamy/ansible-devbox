@@ -1,19 +1,13 @@
 ---
 - hosts: devbox
   sudo: true
-  vars:
-    user: vagrant
-    timezone: Europe/Paris
-    servername: dev.local
-    gitusername: YourName
-    gitemail: your@email.com
-    hostname: devbox
-    doc_root: /var/www/
   vars_files:
+    - vars/config.yml
     - vars/mysql.yml
-    - [ "vars/nginxphp.yml", "vars/ws_defaults.yml" ]
+    - vars/mysql.yml
+    - vars/nginxphp.yml
     # If Apache
-    #- [ "vars/apachephp.yml", "vars/ws_defaults.yml" ]
+    #- vars/apachephp.yml
   roles:
     - init
     - nginx

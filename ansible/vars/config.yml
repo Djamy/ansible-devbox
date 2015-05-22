@@ -1,0 +1,19 @@
+---
+# user variables
+
+# You can and should change those vars
+timezone: Europe/Paris
+servername: dev.local
+gitusername: YourName
+gitemail: your@email.com
+hostname: devbox
+zsh_theme: ys
+zsh_plugins: git svn symfony2
+
+# If you need a Symfony2 vhost ready or the default one
+# Possible values are : default | symfony
+vhostname: symfony
+
+# Avoid changing those vars
+doc_root: /var/www/
+user: vagrant

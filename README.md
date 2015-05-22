@@ -33,9 +33,10 @@ After cloning the repository to your local environment, add your ssh public key 
     ansible-devbox/ansible/roles/init/files/authorized_keys
 
 Add your name and email address to basic git config and edit some stuff in vars if needed
+It's also possible to switch between a default PHP vhost or to a symfony2 vhost
 
 ```bash
-$ vim ansible-devbox/ansible/playbook.yml
+$ vim ansible-devbox/ansible/vars/config.yml
 ```
 
 You can edit the VagrantFile as you need and to specify your shared folder(s)
@@ -45,12 +46,6 @@ $ vim VagrantFile
 ```
 Add this line to your host file
     11.11.11.11 dev.local
-
-### Nginx configuration
-
-A default vhost is provided but if you need a Symfony2 vhost you can uncomment the line in
-
-    ansible-devbox/ansible/vars/nginxphp.yml
 
 ## First start
 
@@ -70,7 +65,7 @@ Useful alias :
 * alias l='ls -l'
 * alias ll='ls -la'
 * alias ngr='service nginx restart'
-* alias ngl='multitail /var/log/nginx/dev.local.error.log /var/log/nginx/dev.local.access.log'
+* alias ngl='multitail /var/log/nginx/dev_local.error.log /var/log/nginx/dev_local.access.log'
 * alias cdw='cd /var/www'
 * alias cdl='cd /var/log'
 * alias ..='cd ..'
@@ -84,5 +79,4 @@ Useful alias :
 * uncomment the dist-upgrade line : *ansible-devbox/ansible/roles/init/tasks/main.yml*
 * more tests
 * Apache conf for apache users
-* more DBs (MariaDB/MongoDB)
-* create Symfony2 dedicated branch (Nginx vhost)
+* more DBs (MariaDB/MongoDB) ?

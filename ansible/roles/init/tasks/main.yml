@@ -1,9 +1,9 @@
 ---
-- name: copy zsh file
-  copy: src=../files/{{item.path}} dest={{item.dest}} mode={{item.mode}} owner={{item.owner}} group={{item.group}}
-  with_items:
-    - { path: '.zshrc', dest: '/root/.zshrc', owner: root, group: root, mode: 600 }
-    - { path: '.zshrc', dest: '/home/{{user}}/.zshrc', owner: "{{user}}", group: "{{user}}", mode: 600 }
+- name: copy root zsh file
+  template: src=zshrc.tpl dest=/root/.zshrc owner=root group=root mode=600
+
+- name: copy user zsh file
+  template: src=zshrc.tpl dest=/home/{{user}}/.zshrc owner="{{user}}" group="{{user}}" mode=600
 
 - name: copy user files
   copy: src=../files{{ item.path }} dest=/home/{{user}}{{ item.dest }} owner={{user}} group={{user}}
