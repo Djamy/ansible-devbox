@@ -47,6 +47,9 @@ $ vim Vagrantfile
 Add this line to your host file
     11.11.11.11 dev.local
 
+### NOTE
+If you change your IP in the Vagrantfile, think to change it in *ansible-devbox/ansible/devbox* and in *ansible-devbox/ansible/devbox_windows* if you are on Windows.
+
 ## First start
 
 ```bash
