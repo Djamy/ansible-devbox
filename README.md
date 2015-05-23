@@ -1,6 +1,6 @@
 #ansible-devbox
 
-##Requirements
+## Requirements
 
 * [VirtualBox](https://www.virtualbox.org/)
 * [Vagrant](http://www.vagrantup.com/)
@@ -19,7 +19,7 @@ ansible-devbox comes with a full web environment with those modules preinstalled
 * Zsh and [oh-my-zsh](https://github.com/robbyrussell/oh-my-zsh)
 * some phptools (list in *ansible-devbox/ansible/roles/app/tasks/main.yml*)
 
-##Installation
+## Installation
 
 ```bash
 $ git clone git://github.com/Djamy/ansible-devbox.git YourDevBox
@@ -39,10 +39,10 @@ It's also possible to switch between a default PHP vhost or to a symfony2 vhost
 $ vim ansible-devbox/ansible/vars/config.yml
 ```
 
-You can edit the VagrantFile as you need and to specify your shared folder(s)
+You can edit the Vagrantfile as you need and to specify your shared folder(s) (*use NFS if you are not on Windows*)
 
 ```bash
-$ vim VagrantFile
+$ vim Vagrantfile
 ```
 Add this line to your host file
     11.11.11.11 dev.local
@@ -53,7 +53,7 @@ Add this line to your host file
 $ vagrant up && vagrant ssh
 ```
 
-##Infos
+## Infos
 
 Login *(unless you already put ssh public key to the authorized_keys file as described above)* : **vagrant/vagrant**
 
@@ -73,7 +73,7 @@ Useful alias :
 * alias ....='cd ../../..'
 * alias .....='cd ../../../..'
 
-##TODO
+## TODO
 
 * cleaning useless conf
 * uncomment the dist-upgrade line : *ansible-devbox/ansible/roles/init/tasks/main.yml*
