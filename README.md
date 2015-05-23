@@ -83,3 +83,4 @@ Useful alias :
 * more tests
 * Apache conf for apache users
 * more DBs (MariaDB/MongoDB) ?
+* add node
