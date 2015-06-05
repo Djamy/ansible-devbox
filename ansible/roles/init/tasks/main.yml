@@ -18,17 +18,17 @@
   with_items:
     - { path: '/.vimrc', dest: '/.vimrc', mode: 644 }
 
-- name: add/check wheezy stable
+- name: add/check jessie stable
   apt_repository: repo='deb http://ftp.de.debian.org/debian stable main contrib non-free' state=present
 
-- name: add/check wheezy updates
-  apt_repository: repo='deb http://ftp.debian.org/debian/ wheezy-updates main contrib non-free' state=present
+- name: add/check jessie updates
+  apt_repository: repo='deb http://ftp.debian.org/debian/ jessie-updates main contrib non-free' state=present
 
-- name: add/check wheezy security updates
-  apt_repository: repo='deb http://security.debian.org/ wheezy/updates main contrib non-free' state=present
+- name: add/check jessie security updates
+  apt_repository: repo='deb http://security.debian.org/ jessie/updates main contrib non-free' state=present
 
-- name: add/check wheezy backports
-  apt_repository: repo='deb http://ftp.us.debian.org/debian wheezy-backports main' state=present
+- name: add/check jessie backports
+  apt_repository: repo='deb http://ftp.us.debian.org/debian jessie-backports main' state=present
 
 - name: Update repository
   action: command /usr/bin/apt-get update
@@ -62,8 +62,8 @@
 
 - name: Add ppa Repository
   sudo: yes
-  apt_repository: repo="deb http://packages.dotdeb.org wheezy all" state=present
-  apt_repository: repo="deb-src http://packages.dotdeb.org wheezy all" state=present
+  apt_repository: repo="deb http://packages.dotdeb.org jessie all" state=present
+  apt_repository: repo="deb-src http://packages.dotdeb.org jessie all" state=present
 
 - name: Update apt
   sudo: yes

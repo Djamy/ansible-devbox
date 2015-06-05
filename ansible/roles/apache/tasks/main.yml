@@ -3,6 +3,10 @@
   sudo: yes
   apt: pkg=apache2 state=latest
 
+- name: Install PHP module
+  sudo: yes
+  apt: pkg=libapache2-mod-php5 state=latest
+
 - name: Install Apache Modules
   apache2_module: state=present name={{ item }}
   notify: restart apache
@@ -18,12 +22,9 @@
 
 - name: Change default apache2.4 site
   sudo: yes
-  template: src=vhost24.conf.tpl dest=/etc/apache2/sites-available/000-default.conf
+  template: src={{vhostname}}.tpl dest=/etc/apache2/sites-available/000-default.conf
   notify: restart apache
   when: apache_version.stdout.find('Apache/2.4.') != -1
 
-- name: Change default apache2.2 site
-  sudo: yes
-  template: src=vhost22.conf.tpl dest=/etc/apache2/sites-available/default
-  notify: restart apache
-  when: apache_version.stdout.find('Apache/2.2.') != -1
+- name: fix log permissions
+  command: chown -R {{user}}:{{user}} /var/log/apache

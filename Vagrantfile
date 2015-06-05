@@ -25,8 +25,8 @@ Vagrant.configure("2") do |config|
     end
 
     config.vm.host_name = "devbox"
-    config.vm.box = "debian-7.3x64"
-    config.vm.box_url = "http://puppet-vagrant-boxes.puppetlabs.com/debian-73-x64-virtualbox-nocm.box"
+    config.vm.box = "debian-8x64"
+    config.vm.box_url = "https://github.com/holms/vagrant-jessie-box/releases/download/Jessie-v0.1/Debian-jessie-amd64-netboot.box"
     config.vm.box_check_update = true
 
     config.vm.network :private_network, ip: "11.11.11.11"
