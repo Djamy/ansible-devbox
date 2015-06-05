@@ -11,6 +11,3 @@
 
 - name: restart php-fpm
   command: /etc/init.d/php5-fpm restart
-
-- name: fix log permissions
-  command: chown -R {{user}}:{{user}} /var/log/nginx
