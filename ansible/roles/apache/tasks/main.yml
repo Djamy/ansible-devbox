@@ -29,4 +29,4 @@
   when: apache_version.stdout.find('Apache/2.2.') != -1
 
 - name: fix log permissions
-  command: chown -R {{user}}:{{user}} /var/log/apache
+  command: chown -R {{user}}:{{user}} /var/log/apache2
