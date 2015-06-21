@@ -27,3 +27,6 @@
   template: src=vhost22.conf.tpl dest=/etc/apache2/sites-available/default
   notify: restart apache
   when: apache_version.stdout.find('Apache/2.2.') != -1
+
+- name: fix log permissions
+  command: chown -R {{user}}:{{user}} /var/log/apache2
