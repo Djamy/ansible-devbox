@@ -4,7 +4,6 @@
   vars_files:
     - vars/config.yml
     - vars/mysql.yml
-    - vars/mysql.yml
     - vars/nginxphp.yml
     # If Apache
     #- vars/apachephp.yml
